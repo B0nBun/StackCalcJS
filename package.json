@@ -1,7 +1,11 @@
 {
-  "name": "stack-calc-js",
-  "version": "1.0.0",
+  "name": "stack-calc",
+  "version": "1.0.1",
   "main": "index.js",
+  "bin": {
+    "stack-calc": "index.js",
+    "_i_dont_know_how_to_fix_cannot_find_module": "evaluation.js"
+  },
   "license": "MIT",
   "dependencies": {
     "inquirer": "^8.2.0"
