@@ -3,7 +3,7 @@ enum Type {
     Operator,
     Intrinsic,
     Function,
-    Macros
+    Macro
 }
 
 enum Operator {
@@ -151,24 +151,24 @@ export const readable = (statement : Statement) : string => {
     }
 }
 
-type Macros = {[key : string] : Statement[]}
-export interface MacrosResultOk {
+type Macro = {[key : string] : Statement[]}
+export interface MacroResultOk {
     status: Status
 }
-export interface MacrosResultError {
+export interface MacroResultError {
     status: Status,
     message: string
 }
 
-export const macroses : Macros = {}
-const isMacros = (n : string) : boolean => Object.keys(macroses).some(m => m === n)
-export const addMacros = (name : string, eq : string) : MacrosResultError | MacrosResultOk => {
+export const macros : Macro = {}
+const isMacro = (n : string) : boolean => Object.keys(macros).some(m => m === n)
+export const addMacro = (name : string, eq : string) : MacroResultError | MacroResultOk => {
     if (reserved.some(r => r === name)) {
         return {status: Status.Error, message: `${name} is already reserved`}
     }
     const parseResult = parse(eq)
     if (parseResult.status === Status.Ok) {
-        macroses[name] = parseResult.statements
+        macros[name] = parseResult.statements
         return {status: Status.Ok}
     }
     return {
@@ -520,12 +520,12 @@ function parse(eq : string, debug : boolean = false) : ParseOk | ParseError {
         if (e === ';') isBreak = true
         if (isBreak || errorMessage) return
         
-        if (isMacros(e)) {
-            if (debug) console.log(`Macros ${e}`)
-            macroses[e].forEach((s : Statement) => {
+        if (isMacro(e)) {
+            if (debug) console.log(`Macro ${e}`)
+            macros[e].forEach((s : Statement) => {
                 s = {
                     ...s,
-                    from: idx // we replace index generated on `addMacros` step with current
+                    from: idx // we replace index generated on `addMacro` step with current
                 }
                 parsed.push(s)
                 if (debug) console.log(`  parsed ${JSON.stringify(s)} - ${readable(s)}`)
