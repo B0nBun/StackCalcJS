@@ -1,4 +1,4 @@
-# text-based stack calculator
+# Stack Calculator Cli
 
 ## Quickstart
 
