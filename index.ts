@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import evaluate, { Status, addMacro, macros, readable, isNumeric } from "./evaluation";
 import type { EvalReturn, MacroResultError } from "./evaluation";
 
