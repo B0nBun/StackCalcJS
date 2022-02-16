@@ -2,12 +2,11 @@
 
 ## Quickstart
 
-You will need typescript and some node modules to start
+You can install this package and run it with npx
 
 ```
-~ npm install
-~ tsc cli.ts
-~ node cli.js
+~ npm i -g stack-calc
+~ npx stack-calc
 ```
 
 ## Basics
