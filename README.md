@@ -13,7 +13,7 @@ You will need typescript and some node modules to start
 ## Basics
 
 ### Numbers
-Each number you type is pushed to teh stack from left to right
+Each number you type is pushed to the stack from left to right
 ```
 > 2 2.5 -.5
 stack: [2, 2.5, -0.5]
@@ -57,6 +57,7 @@ You can preload your macros in json file with `-m` or `--macro` flag
 These are commands which you can type instead of equations
 
 `:d` or `:debug` - switches debug mode
+
 `:m` or `:macros` - prints out all defined macros
 
 ```
