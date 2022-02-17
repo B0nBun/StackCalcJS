@@ -10,6 +10,49 @@ const logError = (err : string) => console.error(err)
 
 let debug : boolean = false;
 // Flags
+if (process.argv.some(a => a === '-h' || a === '--help')) {
+    console.log(`    
+Basics:
+Each number you type is being pushed on the stack, while
+operations, functions and intrinsics affect the stack
+e.g.
+1 .5 -1.4 -> [1, 0.5, -1.4]
+2 2 +     -> [4]
+3 8 log   -> [2]
+    
+Operators:
++  - sum of 2 last items
+-  - substracts 1st item on the stack from the 2nd
+*  - multiplies 2 last items
+/  - divides 1st item on the stack by the 2nd
+// - the same as before but with flooring
+%  - modulus of 1st and 2nd items
+
+Intrinsics:
+dup  - duplicates last item
+drop - drops last item
+swap - swaps 1st and 2nd items 
+over - copies 2nd item on the stack
+
+Other Functions:
+sqrt, sin, cos, tan, ctan, asin, acos, atan, logm, ln, fact, pow, root
+
+Macros Definition:
+Starts with '!' and name, then implementation
+> !PI 3.1415
+> !log2 2 swap log
+
+Commands:
+:d or :debug - debug mode switch
+:m or :macros - list all defined macros
+
+Flags:
+-d or --debug - turn on debug mode on start up
+-m <file.json> or --macros <file.json> - predefine macros from json file
+`)
+    process.exit()
+}
+
 if (process.argv.some(a => a === '-d' || a ==='--debug')) {
     debug = true
 }
