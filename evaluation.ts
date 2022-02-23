@@ -70,7 +70,7 @@ const root = (n : number, r : number) : number => {
 
 export const isNumeric = (n : string) : boolean => n && Boolean(n.match(/^\-?\d*\.?\d+$/))
 
-const isOperator = (n : string) : boolean => Boolean(/[\+|\-|\*|\/|\/\/|\%]/.exec(n))
+const isOperator = (n : string) : boolean => Boolean(/^[\+|\-|\*|\/|\/\/|\%]$/.exec(n))
 const whichOperator = (n : string) : Operator =>
     n === '+'    ? Operator.Plus     :
     n === '-'    ? Operator.Minus    :
